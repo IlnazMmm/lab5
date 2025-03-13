@@ -7,4 +7,9 @@ public partial class MovieDetailPage : ContentPage
 		BindingContext = movie;
 		InitializeComponent();
 	}
+    public MovieDetailPage()
+    {
+        BindingContext = App.MainViewModel.SelectedMovie;
+        InitializeComponent();
+    }
 }
