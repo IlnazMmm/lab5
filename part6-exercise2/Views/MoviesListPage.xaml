@@ -7,6 +7,18 @@
              x:DataType="vm:MovieListViewModel"
              Title="Movies"
              BindingContext="{x:Static local:App.MainViewModel}">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <TextCell Text="{Binding Title}" x:DataType="vm:MovieViewModel">
+                <TextCell.ContextActions>
+                    <MenuItem Text="Delete"
+          IsDestructive="True"
+          Command="{Binding DeleteMovieCommand, Source={x:Static local:App.MainViewModel}}"
+          CommandParameter="{Binding}" />
+                </TextCell.ContextActions>
+            </TextCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
     <ListView ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie, Mode=OneWayToSource}" Margin="10" ItemTapped="ListView_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
